@@ -4,17 +4,10 @@ const _ = require("lodash");
 const Entry = React.createClass({
   render() {
     return (
-      <div className="bb-r-container-content-block bio-column">
-        {
-          _.map(this.props.bio, (par, i) => (
-              <div
-                className="bio-paragraph"
-                key={ "par-" + i }
-              >
-                { par }
-              </div>
-          ))
-        }
+      <div className="card">
+        <div>Name: { this.props.name }</div>
+        <div>Time: { this.props.time }</div>
+        <div>Place: { this.props.place }</div>
       </div>
     );
   }

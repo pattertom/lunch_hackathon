@@ -1,11 +1,23 @@
 const React = require('react');
 const DashboardContainer = require('./components/dashboard_container.jsx');
+const EntryContainer = require('./components/entry_container.jsx');
 
 const MYCONSTANT = 9000;
 
 const Dashboard = React.createClass({
   getInitialState() {
+    let entries = [{
+      name: 'Naf Naf',
+      time: '12:00 PM',
+      place: 'Naf Naf'
+    }, {
+      name: 'Brightwok',
+      time: '12:30 PM',
+      place: 'Office'
+    }];
+
     return {
+      entries: entries,
       my_prop: 'initial',
       userId: sessionStorage.getItem('userId')
     };
@@ -18,7 +30,7 @@ const Dashboard = React.createClass({
   },
 
   isLoggedIn() {
-    let loggedIn = false;
+    let loggedIn = true;
 
     if (this.state.userId) {
       loggedIn = true;
@@ -45,6 +57,15 @@ const Dashboard = React.createClass({
     );
   },
   render() {
+    let currentView;
+    if (this.isLoggedIn) {
+      currentView = <EntryContainer entries={this.state.entries} />
+    } else {
+      currentView = <DashboardContainer
+        isLoggedIn={ this.isLoggedIn() }
+      />
+    }
+
     return (
       <div className="site-wrapper">
 
@@ -63,9 +84,7 @@ const Dashboard = React.createClass({
               </div>
             </div>
 
-            <DashboardContainer
-              isLoggedIn={ this.isLoggedIn() }
-            />
+            { currentView }
 
             <div className="mastfoot">
               <div className="inner">
