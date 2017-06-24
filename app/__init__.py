@@ -38,6 +38,9 @@ from app.controllers.place import place
 
 #from app.controllers.user import user
 
+
+#from app.controllers.user import user
+
 # Register blueprint(s)
 app.register_blueprint(auth)
 app.register_blueprint(user)
@@ -45,6 +48,7 @@ app.register_blueprint(user_entries)
 app.register_blueprint(entry)
 app.register_blueprint(rest)
 app.register_blueprint(place)
+
 
 
 
