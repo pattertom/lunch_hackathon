@@ -6,7 +6,8 @@ const MYCONSTANT = 9000;
 const Dashboard = React.createClass({
   getInitialState() {
     return {
-      my_prop: 'initial'
+      my_prop: 'initial',
+      userId: null
     };
   },
 
@@ -14,6 +15,24 @@ const Dashboard = React.createClass({
     this.setState({
       my_prop: 'changed'
     });
+  },
+
+  isLoggedIn() {
+    let loggedIn = false;
+
+    if (this.state.userId) {
+      loggedIn = true;
+    }
+
+    return loggedIn;
+  },
+
+  login(userId) {
+    this.setState({ userId: userId });
+  },
+
+  logout() {
+    this.setState({ userId: null });
   },
 
   componentWillUnmount() {
@@ -47,7 +66,9 @@ const Dashboard = React.createClass({
               </div>
             </div>
 
-            <DashboardContainer />
+            <DashboardContainer
+              isLoggedIn={ this.isLoggedIn() }
+            />
 
             <div className="mastfoot">
               <div className="inner">
