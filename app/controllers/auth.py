@@ -13,6 +13,7 @@ SECRET_KEY = 'development key'
 DEBUG = True
 
 from app import app
+from app.models.user import User
 
 app.debug = DEBUG
 app.secret_key = SECRET_KEY
