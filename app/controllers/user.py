@@ -8,11 +8,14 @@ from app import app
 from app.models.user import User
 
 @user.route('/')
+@cross_origin()
 def index():
-    if session['email']:
-        user = User.query.filter_by(email=session['email']).first()
-        return jsonify(user.serialize())
-    return 'You are not logged in'
+    user = User.query.first()
+    return jsonify(user.serialize())
+    #  if session['email']:
+        #  user = User.query.filter_by(email=session['email']).first()
+       #   return jsonify(user.serialize())
+    #  return 'You are not logged in'
 
 #  @user.route('/login', methods=['GET', 'POST'])
 #  def login():
