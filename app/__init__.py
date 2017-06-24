@@ -14,6 +14,8 @@ app.config.from_object('config')
 # by modules and controllers
 db = SQLAlchemy(app)
 from app.models.user import User
+from app.models.restaurant import Restaurant
+from app.models.place import Place
 
 # Sample HTTP error handling
 @app.errorhandler(404)
