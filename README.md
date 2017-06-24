@@ -5,7 +5,7 @@
 - pip install virtualenv
 - virtualenv venv
 - . venv/bin/activate
-- deactivate
+- deactivate (only when you want to quit the virtual environment)
 - pip install Flask
 - pip install Flask-OAuth
 
