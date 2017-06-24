@@ -16,7 +16,6 @@ db = SQLAlchemy(app)
 from app.models.user import User
 from app.models.restaurant import Restaurant
 from app.models.place import Place
-
 # Sample HTTP error handling
 @app.errorhandler(404)
 def not_found(error):
@@ -24,10 +23,11 @@ def not_found(error):
 
 # Import a module / component using its blueprint handler variable (auth)
 from app.controllers.auth import auth
+from app.controllers.rest import rest
 
 # Register blueprint(s)
 app.register_blueprint(auth)
-
+app.register_blueprint(rest)
 # Build the database:
 # This will create the database file using SQLAlchemy
 db.create_all()
