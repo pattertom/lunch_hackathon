@@ -1,3 +1,6 @@
 .DS_Store
 UI/build
 UI/node_modules
+venv/*
+.pyc
+*.pyc
