@@ -1,10 +1,16 @@
 const React = require('react');
 
 const LoginButton = React.createClass({
+  getInitialState() {
+    return {
+      userId: this.props.userId
+    };
+  },
+
   render() {
     let button = null;
-    if (!this.props.isLoggedIn) {
-      button = <a href="http://127.0.0.1:5000" className="btn btn-lg btn-secondary" role="button">Sign in with Google</a>;
+    if (!this.state.userId) {
+      button = <a href="#" className="btn btn-lg btn-secondary" role="button" onClick={ this.props.login }>Sign in with Google</a>;
     }
 
     return (
