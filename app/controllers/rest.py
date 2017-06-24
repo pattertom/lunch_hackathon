@@ -4,11 +4,12 @@ from flask_oauth import OAuth
 from app import db
 from app import app
 from app.models.restaurant import Restaurant
+from flask import jsonify
 
 rest = Blueprint('rest', __name__, url_prefix='/rest')
 @rest.route('/')
 def index():
-  return str(Restaurant.query.all())
+  return jsonify(a = [e.serialize() for e in Restaurant.query.all()])
 @rest.route('/create', methods = ['GET'])
 def create():
   name = str(request.args.get("name"))

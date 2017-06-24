@@ -8,4 +8,8 @@ class Restaurant(db.Model):
 		self.name    = name
 	def __repr__(self):
 		return "<Name %s>" % (self.name)
-	
+	def serialize(self):
+	  return {
+		'id': self.id,
+		'name': self.name
+	  }
