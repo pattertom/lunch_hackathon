@@ -21,7 +21,16 @@ const Dashboard = React.createClass({
       name: 'Brightwok',
       time: '12:30 PM',
       place: 'Office'
+    }, {
+      name: 'Brightwok',
+      time: '12:30 PM',
+      place: 'Office'
+    }, {
+      name: 'Brightwok',
+      time: '12:30 PM',
+      place: 'Office'
     }];
+
 
     return {
       entries: entries,
@@ -37,7 +46,7 @@ const Dashboard = React.createClass({
   },
 
   setCurrentUser() {
-    let userUrl = getURL("user/");
+    let userUrl = getURL("user");
     let currentUser = null;
 
     axios.get(userUrl)
@@ -89,27 +98,16 @@ const Dashboard = React.createClass({
     return (
       <div className="site-wrapper">
 
-        <div className="site-wrapper-inner">
-
-          <div className="cover-container">
+        <div className="cover-container">
 
             <Header
               userId={ this.state.userId }
               logout={ this.logout }
             />
 
-            { currentView }
-
-            <div className="mastfoot">
-              <div className="inner">
-                <p>Some text and a <a href="https://getbootstrap.com">link</a>.</p>
-              </div>
-            </div>
-
-          </div>
+          { currentView }
 
         </div>
-
       </div>
     );
   }

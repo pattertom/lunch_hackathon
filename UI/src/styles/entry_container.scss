@@ -21,11 +21,24 @@
   max-width: 40rem;
 }
 
+.add-entry-input {
+  margin: 2rem;
+}
+
+.add-entry-button {
+  margin-left: 1rem;
+}
+
+.add-card {
+  cursor: pointer;
+}
+
 .card {
+  text-align:left;
   float: left;
   width: 33.333%;
   padding: .75rem;
-  margin-bottom: 2rem;
+  margin: 2rem;
   border: 0;
 }
 

@@ -6,8 +6,8 @@ const DashboardContainer = React.createClass({
   render() {
     return (
       <div className="inner cover">
-        <h1 className="cover-heading">Cover your page.</h1>
-        <p className="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+        <h1 className="cover-heading">NextCapital Lunch</h1>
+        <p className="lead">Sign in to figure out where you want to go to lunch!</p>
         <div className="lead">
           <LoginButton
             key={ this.props.userId || -1 }
