@@ -1,14 +1,21 @@
 # lunch_hackathon
-brew install python (install python 2.7)
 
-pip install virtualenv
+## Server
+- brew install python (install python 2.7)
+- pip install virtualenv
+- virtualenv venv
+- . venv/bin/activate
+- deactivate
+- pip install Flask
+- pip install Flask-OAuth
 
-virtualenv venv
+## UI
 
-. venv/bin/activate
+To build and run:
 
-deactivate
+- `npm install -g gulp`
+- `npm install`
+- `gulp build`
+- `python -m SimpleHTTPServer 1337`
+- visit `http://localhost:1337`
 
-pip install Flask
-
-pip install Flask-OAuth
