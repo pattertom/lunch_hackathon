@@ -1,6 +1,7 @@
 const React = require('react');
 const DashboardContainer = require('./components/dashboard_container.jsx');
 const EntryContainer = require('./components/entry_container.jsx');
+const LogoutLink = require('./components/logout_link.jsx');
 
 const MYCONSTANT = 9000;
 
@@ -29,14 +30,12 @@ const Dashboard = React.createClass({
     });
   },
 
-  isLoggedIn() {
-    let loggedIn = true;
-
-    if (this.state.userId) {
-      loggedIn = true;
-    }
-
-    return loggedIn;
+  login() {
+    //window.location.href = "http://127.0.0.1:5000";
+    let userId = 1;
+    sessionStorage.setItem('userId', userId);
+    this.setState({ userId: userId });
+    alert('Login');
   },
 
   logout() {
@@ -58,11 +57,12 @@ const Dashboard = React.createClass({
   },
   render() {
     let currentView;
-    if (this.isLoggedIn) {
+    if (this.state.userId) {
       currentView = <EntryContainer entries={this.state.entries} />
     } else {
       currentView = <DashboardContainer
-        isLoggedIn={ this.isLoggedIn() }
+        userId={ this.state.userId }
+        login={ this.login }
       />
     }
 
@@ -80,6 +80,7 @@ const Dashboard = React.createClass({
                   <a className="nav-link active" href="#">Vote</a>
                   <a className="nav-link" href="#">History</a>
                   <a className="nav-link" href="#">Other</a>
+                  <LogoutLink logout={ this.logout } />
                 </nav>
               </div>
             </div>
@@ -102,4 +103,3 @@ const Dashboard = React.createClass({
 });
 
 module.exports = Dashboard;
-
