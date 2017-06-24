@@ -1,12 +1,13 @@
 # Import flask and template operators
 from flask import Flask, render_template
+from flask_cors import CORS, cross_origin
 
 #  Import SQLAlchemy
 from flask.ext.sqlalchemy import SQLAlchemy
 
 # Define the WSGI application object
 app = Flask(__name__)
-
+CORS(app)
 # Configurations
 app.config.from_object('config')
 
