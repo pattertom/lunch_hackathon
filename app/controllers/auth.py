@@ -52,8 +52,9 @@ def index():
         res = urlopen(req)
         data = json.loads(res.read())
         email = data["email"]
-        user = User.query.filter_by(email=session['email']).first()
-        if not user:
+        if 'email' in session:
+            user = User.query.filter_by(email=session['email']).first()
+        else:
             name = data["name"] if data["name"] else None
             pic_url = data["picture"] if data["picture"] else None
             user = User(data["email"], data["id"], name, pic_url)
