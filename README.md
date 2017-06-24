@@ -1,13 +1,13 @@
 # lunch_hackathon
 
 ## Server
-- brew install python (install python 2.7)
-- pip install virtualenv
-- virtualenv venv
-- . venv/bin/activate
-- deactivate (only when you want to quit the virtual environment)
-- pip install Flask
-- pip install Flask-OAuth
+- `brew install python` (install python 2.7)
+- `pip install virtualenv`
+- `virtualenv venv`
+- `. venv/bin/activate`
+- `deactivate` (only when you want to quit the virtual environment)
+- `pip install Flask`
+- `pip install Flask-OAuth`
 
 ## UI
 
