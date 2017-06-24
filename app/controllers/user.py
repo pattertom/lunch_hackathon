@@ -8,7 +8,6 @@ from app import app
 from app.models.user import User
 
 @user.route('/')
-@cross_origin()
 def index():
     user = User.query.first()
     return jsonify(user.serialize())
