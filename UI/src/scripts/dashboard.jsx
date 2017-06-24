@@ -1,7 +1,7 @@
 const React = require('react');
 const DashboardContainer = require('./components/dashboard_container.jsx');
 const EntryContainer = require('./components/entry_container.jsx');
-const LogoutLink = require('./components/logout_link.jsx');
+const Header = require('./components/header.jsx');
 
 const MYCONSTANT = 9000;
 
@@ -35,7 +35,6 @@ const Dashboard = React.createClass({
     let userId = 1;
     sessionStorage.setItem('userId', userId);
     this.setState({ userId: userId });
-    alert('Login');
   },
 
   logout() {
@@ -73,17 +72,10 @@ const Dashboard = React.createClass({
 
           <div className="cover-container">
 
-            <div className="masthead clearfix">
-              <div className="inner">
-                <h3 className="masthead-brand">Dragon Slayers</h3>
-                <nav className="nav nav-masthead">
-                  <a className="nav-link active" href="#">Vote</a>
-                  <a className="nav-link" href="#">History</a>
-                  <a className="nav-link" href="#">Other</a>
-                  <LogoutLink logout={ this.logout } />
-                </nav>
-              </div>
-            </div>
+            <Header
+              userId={ this.state.userId }
+              logout={ this.logout }
+            />
 
             { currentView }
 
