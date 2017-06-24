@@ -52,9 +52,8 @@ def index():
         res = urlopen(req)
         data = json.loads(res.read())
         email = data["email"]
-        if 'email' in session:
-            user = User.query.filter_by(email=session['email']).first()
-        else:
+        user = User.query.filter_by(email=email).first()
+        if not user:
             name = data["name"] if data["name"] else None
             pic_url = data["picture"] if data["picture"] else None
             user = User(data["email"], data["id"], name, pic_url)
@@ -63,7 +62,7 @@ def index():
 
         session['email'] = user.email
 
-        return redirect(url_for('http://localhost:1337/'))
+        return redirect('http://localhost:1337/')
 
     except URLError, e:
         if e.code == 401:
