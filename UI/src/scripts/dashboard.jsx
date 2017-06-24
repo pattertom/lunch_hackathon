@@ -1,9 +1,15 @@
 const React = require('react');
+const axios = require('axios');
 const DashboardContainer = require('./components/dashboard_container.jsx');
 const EntryContainer = require('./components/entry_container.jsx');
 const Header = require('./components/header.jsx');
 
 const MYCONSTANT = 9000;
+const BACKEND_URL = "http://127.0.0.1:5000/";
+
+const getURL = (url) => {
+  return BACKEND_URL + url
+};
 
 const Dashboard = React.createClass({
   getInitialState() {
@@ -20,7 +26,7 @@ const Dashboard = React.createClass({
     return {
       entries: entries,
       my_prop: 'initial',
-      userId: sessionStorage.getItem('userId')
+      userId: null
     };
   },
 
@@ -30,15 +36,30 @@ const Dashboard = React.createClass({
     });
   },
 
+  setCurrentUser() {
+    let userUrl = getURL("user/");
+    let currentUser = null;
+
+    axios.get(userUrl)
+    .then((response) => {
+      this.setState({ userId: response.data.id });
+    })
+    .catch((response) => { console.log(response) });
+
+    return currentUser;
+  },
+
+  componentDidMount() {
+    if (!this.state.userId) {
+      this.setCurrentUser();
+    }
+  },
+
   login() {
-    //window.location.href = "http://127.0.0.1:5000";
-    let userId = 1;
-    sessionStorage.setItem('userId', userId);
-    this.setState({ userId: userId });
+    window.location.href = BACKEND_URL;
   },
 
   logout() {
-    sessionStorage.removeItem('userId');
     this.setState({ userId: null });
   },
 
