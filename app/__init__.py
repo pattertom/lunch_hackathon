@@ -29,15 +29,11 @@ from app.controllers.user_entry import user_entry
 from app.controllers.entry import entry
 from app.controllers.user import user
 
-
-#from app.controllers.user import user
-
 # Register blueprint(s)
 app.register_blueprint(auth)
 app.register_blueprint(user)
 app.register_blueprint(user_entry)
 app.register_blueprint(entry)
-
 
 # Build the database:
 # This will create the database file using SQLAlchemy

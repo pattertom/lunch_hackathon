@@ -61,9 +61,8 @@ def index():
             db.session.commit()
 
         session['email'] = user.email
-        return redirect(url_for('user.index'))
 
-        #  return jsonify(({'user': user.name, "email": user.email, "google_id": user.google_id, "pic_url": user.pic_url}))
+        return redirect(url_for('http://localhost:1337/'))
 
     except URLError, e:
         if e.code == 401:
