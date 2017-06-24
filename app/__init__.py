@@ -17,6 +17,7 @@ from app.models.user import User
 from app.models.restaurant import Restaurant
 from app.models.place import Place
 from app.models.entry import Entry
+from app.models.user_entry import User_Entry
 
 # Sample HTTP error handling
 @app.errorhandler(404)
@@ -25,15 +26,19 @@ def not_found(error):
 
 # Import a module / component using its blueprint handler variable (auth)
 from app.controllers.auth import auth
-from app.controllers.user_entry import user_entry
+from app.controllers.user_entry import user_entries
 from app.controllers.entry import entry
 from app.controllers.user import user
+
+
+#from app.controllers.user import user
 
 # Register blueprint(s)
 app.register_blueprint(auth)
 app.register_blueprint(user)
-app.register_blueprint(user_entry)
+app.register_blueprint(user_entries)
 app.register_blueprint(entry)
+
 
 # Build the database:
 # This will create the database file using SQLAlchemy
