@@ -28,12 +28,16 @@ from app.controllers.auth import auth
 from app.controllers.user_entry import user_entry
 from app.controllers.entry import entry
 from app.controllers.user import user
+from app.controllers.rest import rest
+from app.controllers.place import place
 
 # Register blueprint(s)
 app.register_blueprint(auth)
 app.register_blueprint(user)
 app.register_blueprint(user_entry)
 app.register_blueprint(entry)
+app.register_blueprint(rest)
+app.register_blueprint(place)
 
 # Build the database:
 # This will create the database file using SQLAlchemy
