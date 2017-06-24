@@ -9,7 +9,7 @@ import json
 db = SQLAlchemy(app)
 
 from app.models.user import User
-user_entry = Blueprint('user_entry', __name__, url_prefix='/user')
+user_entry = Blueprint('user_entry', __name__, url_prefix='/user_entry')
 @user_entry.route('/')
 def user_index():
     return 'Hello World - Users'
