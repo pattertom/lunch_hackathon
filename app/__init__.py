@@ -24,11 +24,14 @@ def not_found(error):
 
 # Import a module / component using its blueprint handler variable (auth)
 from app.controllers.auth import auth
+from app.controllers.user import user
 
 # Register blueprint(s)
 app.register_blueprint(auth)
+app.register_blueprint(user)
 
 # Build the database:
 # This will create the database file using SQLAlchemy
+db.drop_all()
 db.create_all()
 db.session.commit()
