@@ -7,8 +7,8 @@ class Entry(db.Model):
     date_modified = db.Column(db.DateTime,  default=db.func.current_timestamp(),
                                            onupdate=db.func.current_timestamp())
     
-    place_id      = db.Column(db.Integer, db.ForeignKey('place.id'), nullable=False)
-    restaurant_id = db.Column(db.Integer, db.ForeignKey('restaurant.id'), nullable=False)
+    place_id      = db.Column(db.Integer, db.ForeignKey('places.id'), nullable=False)
+    restaurant_id = db.Column(db.Integer, db.ForeignKey('restaurants.id'), nullable=False)
     meeting_time  = db.Column(db.DateTime, nullable=False, unique=False)
 
     # New instance instantiation procedure

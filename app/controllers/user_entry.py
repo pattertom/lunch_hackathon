@@ -9,13 +9,12 @@ import json
 db = SQLAlchemy(app)
 
 from app.models.user import User
-user_entry = Blueprint('user_entry', __name__, url_prefix='/users')
-
-@app.route('/')
+user_entry = Blueprint('user_entry', __name__, url_prefix='/user')
+@user_entry.route('/')
 def user_index():
     return 'Hello World - Users'
 
-@app.route('/all')
+@user_entry.route('/all')
 def all_users():
     users = User.query.all()
     return jsonify(users=[e.serialize() for e in users])
