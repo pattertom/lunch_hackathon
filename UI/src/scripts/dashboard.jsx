@@ -7,7 +7,7 @@ const Dashboard = React.createClass({
   getInitialState() {
     return {
       my_prop: 'initial',
-      userId: null
+      userId: sessionStorage.getItem('userId')
     };
   },
 
@@ -27,11 +27,8 @@ const Dashboard = React.createClass({
     return loggedIn;
   },
 
-  login(userId) {
-    this.setState({ userId: userId });
-  },
-
   logout() {
+    sessionStorage.removeItem('userId');
     this.setState({ userId: null });
   },
 
