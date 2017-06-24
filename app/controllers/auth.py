@@ -1,6 +1,7 @@
 from flask import Blueprint, request, render_template, \
-                  flash, g, session, redirect, url_for
+                  flash, g, session, redirect, url_for, jsonify
 from flask_oauth import OAuth
+import json
 
 
 # You must configure these 3 values from Google APIs console
@@ -13,6 +14,8 @@ SECRET_KEY = 'development key'
 DEBUG = True
 
 from app import app
+from app import db
+from app.controllers.user import user
 from app.models.user import User
 
 app.debug = DEBUG
@@ -32,6 +35,7 @@ google = oauth.remote_app('google',
                           consumer_secret=GOOGLE_CLIENT_SECRET)
 
 auth = Blueprint('auth', __name__, url_prefix='')
+
 @auth.route('/')
 def index():
     access_token = session.get('access_token')
@@ -46,6 +50,21 @@ def index():
                   None, headers)
     try:
         res = urlopen(req)
+        data = json.loads(res.read())
+        email = data["email"]
+        user = User.query.filter_by(email=session['email']).first()
+        if not user:
+            name = data["name"] if data["name"] else None
+            pic_url = data["picture"] if data["picture"] else None
+            user = User(data["email"], data["id"], name, pic_url)
+            db.session.add(user)
+            db.session.commit()
+
+        session['email'] = user.email
+        return redirect(url_for('user.index'))
+
+        #  return jsonify(({'user': user.name, "email": user.email, "google_id": user.google_id, "pic_url": user.pic_url}))
+
     except URLError, e:
         if e.code == 401:
             # Unauthorized - bad token
@@ -55,13 +74,10 @@ def index():
 
     return res.read()
 
-
 @auth.route('/login')
 def login():
     callback=url_for('auth.authorized', _external=True)
     return google.authorize(callback=callback)
-
-
 
 @auth.route(REDIRECT_URI)
 @google.authorized_handler
