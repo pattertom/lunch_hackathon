@@ -8,6 +8,9 @@
 - `deactivate` (only when you want to quit the virtual environment)
 - `pip install Flask`
 - `pip install Flask-OAuth`
+- `pip install Flask-SQLAlchemy`
+- `pip install flask-mysql`
+
 
 ## UI
 
