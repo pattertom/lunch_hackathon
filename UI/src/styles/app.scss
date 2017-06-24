@@ -1,0 +1,25 @@
+body {
+  background: #FFF;
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans';
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+.main, .slide {
+  height: 100%;
+}
+
+.slide-transition-enter {
+  position: absolute;
+  opacity: 0.01;
+}
+
+.slide-transition-enter.slide-transition-enter-active {
+  opacity: 1;
+  transition: opacity 2s ease-in-out;
+}
+
+@import "bio_slide.scss";
+@import "pivotal_slide.scss";
