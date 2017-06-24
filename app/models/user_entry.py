@@ -4,7 +4,7 @@ class User_Entry(db.Model):
 	__tablename__ = 'user_entry'
 	id = db.Column(db.Integer, primary_key=True)
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable = False, unique = True)
-	entry_id = db.Column(db.Integer, db.ForeignKey('entry.id'), nullable = False, unique = True)
+	entry_id = db.Column(db.Integer, db.ForeignKey('entry.id'), nullable = False, unique = False)
 
 	def __init__(self, user_id, entry_id):
 		self.user_id    = user_id

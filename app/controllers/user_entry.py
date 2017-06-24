@@ -1,6 +1,7 @@
 # Import flask dependencies
 from flask import Blueprint, request, render_template, \
                   flash, g, session, redirect, url_for, jsonify
+from flask import jsonify
 from flask.ext.sqlalchemy import SQLAlchemy
 from app import app
 from app import db
@@ -31,3 +32,12 @@ def all_user_entries():
     user_entries = User_Entry.query.all()
     return jsonify(user_entries=[e.serialize() for e in user_entries])
 
+@user_entries.route('/id',methods=['GET'])
+def get_users_for_entry():
+    eid = int(request.args.get("entry_id"))
+    u_entries = User_Entry.query.filter_by(entry_id=eid)
+    users = []
+    for entry in u_entries:
+        users.append(User.query.get(entry.user_id).serialize())
+
+    return jsonify(users)
