@@ -13,10 +13,10 @@ from app.models.entry import Entry
 from app.models.user_entry import User_Entry
 user_entries = Blueprint('user_entries', __name__, url_prefix='/user_entries')
 
-@user_entries.route('/create', methods=['POST'])
+@user_entries.route('/create', methods=['GET'])
 def user_entry_create():
-    uid = request.form['user_id']
-    eid = request.form['entry_id']
+    uid = int(request.args.get("user_id"))
+    eid = int(request.args.get("entry_id"))
     user_entry1 = User_Entry(uid, eid)
     db.session.add(user_entry1)
     db.session.commit()
