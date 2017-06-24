@@ -10,6 +10,7 @@ const DashboardContainer = React.createClass({
         <p className="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
         <p className="lead">
           <LoginButton
+            key={ this.props.userId || -1 }
             userId={ this.props.userId }
             login={ this.props.login }
           />
