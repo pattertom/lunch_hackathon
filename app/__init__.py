@@ -1,8 +1,8 @@
 # Import flask and template operators
 from flask import Flask, render_template
 
-# Import SQLAlchemy
-#  from flask.ext.sqlalchemy import SQLAlchemy
+#  Import SQLAlchemy
+from flask.ext.sqlalchemy import SQLAlchemy
 
 # Define the WSGI application object
 app = Flask(__name__)
@@ -12,7 +12,8 @@ app.config.from_object('config')
 
 # Define the database object which is imported
 # by modules and controllers
-#  db = SQLAlchemy(app)
+db = SQLAlchemy(app)
+from app.models.user import User
 
 # Sample HTTP error handling
 @app.errorhandler(404)
@@ -24,9 +25,8 @@ from app.controllers.auth import auth
 
 # Register blueprint(s)
 app.register_blueprint(auth)
-# app.register_blueprint(xyz_module)
-# ..
 
 # Build the database:
 # This will create the database file using SQLAlchemy
-#  db.create_all()
+db.create_all()
+db.session.commit()

@@ -1,8 +1,8 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
-const SlideShow = require('./slideshow.jsx');
+const Dashboard = require('./dashboard.jsx');
 
 ReactDOM.render(
-  <SlideShow />,
+  <Dashboard />,
   document.getElementById('main')
 );
