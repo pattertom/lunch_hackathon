@@ -14,6 +14,9 @@ app.config.from_object('config')
 # by modules and controllers
 db = SQLAlchemy(app)
 from app.models.user import User
+#from app.models.place import Place
+#from app.models.restaurant import Restaurant
+#from app.models.entry import Entry
 
 # Sample HTTP error handling
 @app.errorhandler(404)
@@ -22,9 +25,14 @@ def not_found(error):
 
 # Import a module / component using its blueprint handler variable (auth)
 from app.controllers.auth import auth
+from app.controllers.user_entry import user_entry
+#from app.controllers.entry import entry
 
 # Register blueprint(s)
 app.register_blueprint(auth)
+app.register_blueprint(user_entry)
+#app.register_blueprint(entry)
+
 
 # Build the database:
 # This will create the database file using SQLAlchemy

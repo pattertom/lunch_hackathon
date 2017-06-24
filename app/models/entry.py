@@ -20,3 +20,12 @@ class Entry(db.Model):
 
     def __repr__(self):
         return '<Entry %d, %d>' % (self.place_id, self.restaurant_id)
+
+    def serialize(self):
+        return {
+            'id': self.id,
+            'place_id': self.place_id, 
+            'restaurant_id': self.restaurant_id,
+            'meeting_time': self.meeting_time,
+            'date_created': self.date_created,
+        }
