@@ -1,9 +1,7 @@
 const React = require('react');
 const _ = require('lodash');
 const moment = require('moment');
-const API_TOKEN = require('../../../pivotal_token.js');
 const axios = require('axios');
-axios.defaults.headers.common['X-TrackerToken'] = API_TOKEN;
 
 // PivotalTracker constants
 const PROJECT_ID = '1227506';
