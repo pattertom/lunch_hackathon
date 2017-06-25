@@ -6,7 +6,6 @@ const Header = React.createClass({
     if (this.props.userId) {
       logoutLink = <a className="nav-link" href="#" onClick={ this.props.logout }>Logout</a>;
       image = <img src="images/jack_billings.jpg" width="100px"/>
-
     }
 
     return (

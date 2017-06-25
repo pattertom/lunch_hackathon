@@ -10,7 +10,6 @@ const DashboardContainer = React.createClass({
         <p className="lead">Sign in to figure out where you want to go to lunch!</p>
         <div className="lead">
           <LoginButton
-            key={ this.props.userId || -1 }
             userId={ this.props.userId }
             login={ this.props.login }
           />

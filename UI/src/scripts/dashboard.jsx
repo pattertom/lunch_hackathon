@@ -4,8 +4,7 @@ const DashboardContainer = require('./components/dashboard_container.jsx');
 const EntryContainer = require('./components/entry_container.jsx');
 const Header = require('./components/header.jsx');
 
-const MYCONSTANT = 9000;
-const BACKEND_URL = "http://127.0.0.1:5000/";
+const BACKEND_URL = 'http://127.0.0.1:5000/';
 
 const getURL = (url) => {
   return BACKEND_URL + url
@@ -31,31 +30,23 @@ const Dashboard = React.createClass({
       place: 'Office'
     }];
 
-
     return {
       entries: entries,
-      my_prop: 'initial',
       userId: null
     };
   },
 
-  new_func() {
-    this.setState({
-      my_prop: 'changed'
-    });
-  },
-
   setCurrentUser() {
-    let userUrl = getURL("user");
-    let currentUser = null;
+    let userUrl = getURL('user');
 
     axios.get(userUrl)
     .then((response) => {
       this.setState({ userId: response.data.id });
     })
-    .catch((response) => { console.log(response) });
-
-    return currentUser;
+    .catch((response) => {
+      console.log('Error');
+      console.log(response);
+    });
   },
 
   componentDidMount() {
