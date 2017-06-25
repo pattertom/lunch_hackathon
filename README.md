@@ -4,12 +4,13 @@
 - `brew install python` (install python 2.7)
 - `pip install virtualenv`
 - `virtualenv venv`
-- `. venv/bin/activate`
+- `. venv/bin/activate` (`. venv/Scripts/activate` for Windows)
 - `deactivate` (only when you want to quit the virtual environment)
 - `pip install Flask`
 - `pip install Flask-OAuth`
 - `pip install Flask-SQLAlchemy`
 - `pip install flask-mysql`
+- `pip install flask-cors`
 
 
 ## UI
